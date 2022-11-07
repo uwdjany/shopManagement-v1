@@ -1,0 +1,17 @@
+.sigin-container{
+    width: 500px;
+    height: 300px;
+
+
+}
+img{
+    width: 150px;
+   padding-left:150px;
+    
+}
+.lbl{
+    padding-top: 0px;
+    position: absolute;
+    right: 55%;
+    top: 55%;
+}

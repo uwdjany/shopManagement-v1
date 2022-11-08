@@ -6,6 +6,7 @@ import ProductView from "../view/product";
 import UserView from "../view/users";
 import PurchaseView from "../view/Purchase"
 import DashRoutes from "./DashRoutes";
+import SaleView from "../view/Sales";
 
 
 const MainRoutes =()=>{
@@ -14,10 +15,11 @@ const MainRoutes =()=>{
         <Route path="/" element={<HomeView/>}/>
         <Route path="/login" element={<HomeView/>}/>
         <Route element={<DashRoutes/>}>
-        <Route path="/user" element={<PurchaseView/>}/>
+        <Route path="/purchase" element={<PurchaseView/>}/>
         <Route path="/dashboard" element={<DashboardView/>}/>
         <Route path="/product" element={<ProductView/>}/>
-        <Route path="/sales" element={<UserView/>}/>
+        <Route path="/user" element={<UserView/>}/>
+        <Route path="/sales" element={<SaleView/>}/>
         </Route>
        
 

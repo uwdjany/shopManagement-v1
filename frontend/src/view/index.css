@@ -1,4 +1,4 @@
-.sigin-container{
+/* .sigin-container{
     width: 500px;
     height: 300px;
 
@@ -14,4 +14,11 @@ img{
     position: absolute;
     right: 55%;
     top: 55%;
+} */
+.signin_container{
+
+    height:50vh;
+}
+img{
+    width:18%
 }

@@ -1,13 +1,12 @@
-import userModel from "../models/user";
+import UserModel from "../models/user";
 import { hashPassword, isPasswordMatching } from "../utils/hashPassword";
-import Response from "../utils/response";
-import { generateToken } from "../utils/token";
+import Response from "../utils/Response";
 import status from "http-status";
+import { generateToken } from "../utils/token";
 
 export const checkUser = async (req, res, next) => {
   let { email, password } = req.body;
-  const user = await userModel.findOne({ email });
-
+  const user = await UserModel.findOne({ email });
   if (!user) {
     req.body.password = hashPassword(password);
     return next();
@@ -17,7 +16,7 @@ export const checkUser = async (req, res, next) => {
 
 export const loginUser = async (req, res) => {
   let { email, password } = req.body;
-  const user = await userModel.findOne({ email });
+  const user = await UserModel.findOne({ email });
   if (!user) {
     return Response.errorMessage(res, "user is not exist", status.NOT_FOUND);
   }
@@ -26,7 +25,7 @@ export const loginUser = async (req, res) => {
     const token = generateToken({ user });
     return Response.succesMessage(
       res,
-      "Successfully logged in",
+      "Successfully Logged in",
       { user, token },
       status.OK
     );

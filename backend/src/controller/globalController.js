@@ -14,7 +14,7 @@ export const create = (Model) => async (req, res, next) => {
         status.BAD_REQUEST
       );
     }
-    return Response.successMessage(res, "Success", data, status.CREATED);
+    return Response.succesMessage(res, "successfuly created", data, status.OK);
   } catch (error) {
     console.log(error);
   }
@@ -28,7 +28,7 @@ export const getAll = (Model) => async (req, res, next) => {
     if (!data) {
       return Response.errorMessage(res, "failed!", status.BAD_REQUEST);
     }
-    return Response.successMessage(res, "Success", data, status.OK);
+    return Response.succesMessage(res, "Success", data, status.OK);
   } catch (error) {
     console.log(error);
   }
@@ -58,7 +58,7 @@ export const updateOneById = (Model) => async (req, res, next) => {
     if (!data) {
       return Response.errorMessage(res, "failed", status.BAD_REQUEST);
     }
-    return Response.successMessage(res, "Success", data, status.OK);
+    return Response.succesMessage(res, "Success", data, status.OK);
   } catch (error) {
     console.log(error);
   }
@@ -73,7 +73,7 @@ export const deleteOneById = (Model) => async (req, res, next) => {
     if (!data) {
       return Response.errorMessage(res, "failed!", status.BAD_REQUEST);
     }
-    return Response.successMessage(res, "Success", data, status.OK);
+    return Response.succesMessage(res, "Success", data, status.OK);
   } catch (error) {
     console.log(error);
   }

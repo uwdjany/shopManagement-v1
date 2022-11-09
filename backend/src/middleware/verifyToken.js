@@ -10,7 +10,7 @@ export const verifyUserToken = async (req, res, next) => {
       req.body.token ||
       req.query["auth-token"];
     if (!token) {
-      return Response.errorMessage(res, "No token provided!", status.NOT_FOUND);
+      return Response.errorMessage(res, "no token provided!", status.NOT_FOUND);
     }
     const payload = decodeToken(token);
     const { name } = payload;

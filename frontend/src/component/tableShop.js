@@ -10,7 +10,7 @@ import Paper from "@mui/material/Paper";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getAllProductAction } from "../redux/product/actions";
-export default function BasicTable() {
+export default function BasicTable(props) {
   const dispatch = useDispatch();
 const {products,isFetching} = useSelector((state)=>state.product)
   useEffect(() => {
@@ -22,10 +22,13 @@ const {products,isFetching} = useSelector((state)=>state.product)
         <TableHead>
           <TableRow>
             <TableCell>No</TableCell>
-            <TableCell>Product Name</TableCell>
-            <TableCell align="right"> unity</TableCell>
-            <TableCell align="right">Description</TableCell>
-            <TableCell align="right">Status</TableCell>
+            {props?.tableData?.map((data) =>(
+              <TableCell>{data.title}</TableCell>
+
+            ))
+              
+             }
+        
           </TableRow>
         </TableHead>
         <TableBody>
@@ -37,12 +40,19 @@ const {products,isFetching} = useSelector((state)=>state.product)
               <TableCell component="th" scope="row">
                 {index + 1}
               </TableCell>
-              <TableCell align="left">{row.name}</TableCell>
+              {
+                props?.tableData?.map((data,index)=>(
+                  <TableCell align="left">{row[data.name]}</TableCell>
+
+                ))
+              }
+
+             {/* <TableCell align="left">{row.name}</TableCell>
               <TableCell align="right">{row.unity}</TableCell>
               <TableCell align="right">{row.description}</TableCell>
               <TableCell align="right">
                 {row.isActive ? "Is Available" : "Is Not Available"}
-              </TableCell>
+          </TableCell>*/}
             </TableRow>
           ))}
         </TableBody>

@@ -1,4 +1,12 @@
 import React from "react";
+import TableShop  from "../component/tableShop"
+
+const tableData=[
+    {title:"",name:"name"},
+    {title:"",name:"name"},
+    {title:"",name:"name"},
+]
+
 
 const ViewComponent =()=>{
     return(

@@ -12,9 +12,11 @@ import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { Card } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { authActions } from "../../redux/auth";
 export default function AccountMenu() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -38,7 +40,7 @@ export default function AccountMenu() {
         }}
       >
         <Typography sx={{ minWidth: 100 }}>
-          <b>{user.role}</b> ~ {user?.names}
+          <b>{user?.role}</b> ~ {user?.names}
         </Typography>
         <Tooltip title="Account settings">
           <IconButton
@@ -49,7 +51,7 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-          <Avatar sx={{ width: 52, height: 52 }} src={user?.picture}></Avatar>
+            <Avatar sx={{ width: 52, height: 52 }} src={user?.picture}></Avatar>
           </IconButton>
         </Tooltip>
       </Card>
@@ -107,7 +109,12 @@ export default function AccountMenu() {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem onClick={() => navigate("/login")}>
+        <MenuItem
+          onClick={() => {
+            dispatch(authActions.logoutAction({}));
+            navigate("/login");
+          }}
+        >
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

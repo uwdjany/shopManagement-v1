@@ -11,6 +11,10 @@ const authSclice = createSlice({
         setIsFetching(state,action){
             state.isFetching = action.payload
         },
+        logoutAction(state,action){
+            state.token = "";
+            state.user={};
+        }
 
 
     }
